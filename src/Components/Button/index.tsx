@@ -1,7 +1,8 @@
 import React from 'react'
+import style from './button.module.css'
 
-export default function Button() {
+export default function Button(props: {texto: String}) {
   return (
-    <button>Botão</button>
+    <button className={style.botao}> {props.texto} </button>
   )
 }
