@@ -10,9 +10,13 @@ interface Props extends iTarefa{
 export default function Item({tarefa, tempo, selecionado, id, completado, selecionaTarefa}: Props) {
   return (
     <li 
-      className={`${style.item} ${selecionado? style.itemSelecionado : ''}`} 
+      className={
+        `${style.item} 
+         ${selecionado? style.itemSelecionado : ''} 
+         ${completado? style.itemCompletado : false}`
+        } 
       onClick={()=> 
-        selecionaTarefa(
+        !completado && selecionaTarefa(
           {
             tarefa, 
             tempo, 
@@ -24,6 +28,9 @@ export default function Item({tarefa, tempo, selecionado, id, completado, seleci
         }>
     <h3> {tarefa} </h3>
     <span> {tempo} </span>
+
+    {completado && <span className={style.concluido} aria-label="tarefa completada"> </span>}
+    
     </li>   
   )
 }

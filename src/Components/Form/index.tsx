@@ -16,7 +16,7 @@ export default function Form({setTarefas, tarefas}: {setTarefas: any, tarefas: i
       tempo: `${tempo}`,
       selecionado: false,
       completado: false,
-      id: uuidv4() 
+      id: uuidv4()
     }  
     //setTarefas([...tarefas, {...novaTarefa }])
     setTarefas((tarefasAntigas: iTarefa[]) => 
@@ -34,8 +34,12 @@ export default function Form({setTarefas, tarefas}: {setTarefas: any, tarefas: i
 
 
   return (
-    <form className={style.novaTarefa} onSubmit={adicionarTarefa}>
-        <div className={style.inputContainer}>
+    <form 
+    className={style.novaTarefa} 
+    onSubmit={adicionarTarefa}>
+        <div 
+        className={style.inputContainer}
+        >
             <label htmlFor="tarefa"></label>
             <input 
             type="text" 
@@ -46,15 +50,18 @@ export default function Form({setTarefas, tarefas}: {setTarefas: any, tarefas: i
             placeholder="O que você quer estudar?" 
             required />
         </div>
-        <div className={style.inputContainer}>
+        <div 
+        className={style.inputContainer}
+        >
             <label htmlFor="tempo"></label>
             <input type="time" 
             name="tempo" 
             id="tempo" 
+            step="1"
             value={tempo}
             onChange={evento => setTempo(evento.target.value)}
             min="00:00:00" 
-            // max=":30:00" 
+            max="01:30:00" 
             required />
         </div>
         <Button texto="Adicionar"></Button>
